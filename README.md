@@ -89,6 +89,7 @@ uv run --python 3.13 --with numpy --with matplotlib python tools/build.py --crop
 | 기기 | 통신 | 첫 화면까지 | 비고 |
 |---|---|---|---|
 | Windows 노트북 · Chrome | 로컬 서버 | 2.0초 | 받기 0.0초, 풀기 0.9초 |
+| Windows 노트북 · Chrome | 집 인터넷, GitHub Pages | 5.8초 | 받기 1.6초(7.28MB), 풀기 1.3초, 처음 받는 상태 |
 | 내 폰 | (작성 예정) | (작성 예정) | 처음 받는 상태 |
 | 다른 사람 폰 | (작성 예정) | (작성 예정) | 처음 받는 상태 |
 
