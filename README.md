@@ -156,7 +156,8 @@ shots/before_after.png  1차와 2차
 shots/compare_*.png 같은 시점의 PLY / SOG
 tools/build.py      npz → (신뢰도·자르기·수평) → PLY → 세 형식 변환·측정
 tools/extract_more.py   영상별 구간 최고 선명도 프레임 뽑기
-tools/open_space_colab.ipynb  코랩 복원 노트 (1차)
+tools/open_space_colab.ipynb     코랩 복원 노트 (1차, 24장)
+tools/open_space_colab_v2.ipynb  코랩 복원 노트 (2차, 64장 + 점별 신뢰도 저장)
 ```
 
 다른 형식을 보려면 주소 뒤에 `?f=파일이름`을 붙이거나, **파일 비교…** 단추를 누르거나, 파일을 화면에 끌어다 놓으면 됩니다.
