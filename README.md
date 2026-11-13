@@ -4,6 +4,7 @@
 
 - **보기:** https://basco-git.github.io/open-space/
 - **장면 파일:** https://basco-git.github.io/open-space/scene.sog
+- **추가 서브미션 — 곰 머리 오르기 게임:** https://basco-git.github.io/bear-climb/ (이 장면에 캐릭터와 발판을 넣은 점프 게임, [저장소](https://github.com/basco-git/bear-climb))
 
 ![뷰어 화면](shots/viewer.png)
 
