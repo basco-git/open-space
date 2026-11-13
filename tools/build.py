@@ -89,6 +89,7 @@ def main():
     ap.add_argument("--opacity", type=float, default=0.9)
     ap.add_argument("--crop", type=float, default=0.0,
                     help="0 보다 크면 카메라 시선이 모이는 점(대상) 둘레 이 반경 안의 점만 남김")
+    ap.add_argument("--conf-min", type=float, default=0.0, help="npz 에 conf 가 있으면 이 값 이하인 점을 버림")
     ap.add_argument("--level", action="store_true", help="탁자 면을 찾아 수평으로 돌리고 대상을 원점에 둠")
     ap.add_argument("--clean-r", type=float, default=0.0, help="--level 과 함께: 이 반경 밖의")
     ap.add_argument("--clean-h", type=float, default=0.03, help="탁자 위 이 높이를 넘는 점을 허공 점으로 보고 지움")
@@ -99,6 +100,10 @@ def main():
     d = np.load(a.npz)
     xyz, rgb, cams = d["xyz"], d["rgb"], d["cams"]
     target = look_target(cams)
+    if a.conf_min > 0 and "conf" in d:
+        m = d["conf"].astype(np.float32) > a.conf_min
+        print(f"신뢰도 {a.conf_min} 이하 제거: {len(xyz):,} -> {m.sum():,}점")
+        xyz, rgb = xyz[m], rgb[m]
     print(f"카메라 시선이 모이는 점(모델 좌표) {np.round(target, 3)} / y·z 뒤집으면 {np.round(target * [1, -1, -1], 3)}")
     if a.crop > 0:
         m = np.linalg.norm(xyz - target, axis=1) < a.crop
@@ -156,7 +161,7 @@ def main():
     cpos = cams[:, :3, 3]
     spread = float(np.linalg.norm(cpos.max(0) - cpos.min(0)))
     diag = float(np.linalg.norm(d["xyz"].max(0) - d["xyz"].min(0)))
-    res = dict(K=a.K, n_keep=a.n_keep, crop=a.crop, target=target.tolist(), level=a.level,
+    res = dict(K=a.K, n_keep=a.n_keep, conf_min=a.conf_min, npz=Path(a.npz).name, crop=a.crop, target=target.tolist(), level=a.level,
                clean_r=a.clean_r, clean_h=a.clean_h, home_view=home, opacity=a.opacity, radius=r, extent=extent, splats=n,
                spread=spread, diag=diag, spread_ratio=spread / diag, formats=rows)
     json.dump(res, open(out / "results.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False)
