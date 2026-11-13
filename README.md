@@ -120,7 +120,7 @@ uv run --python 3.13 --with numpy --with matplotlib python tools/build.py \
 | 판 | 기기 | 통신 | 첫 화면까지 | 비고 |
 |---|---|---|---|---|
 | 2차 (11.55MB) | Windows 노트북 · Chrome | 로컬 서버 | 4.1초 | 받기 0.1초, 풀기 1.8초 |
-| 2차 | Windows 노트북 · Chrome | 집 인터넷, GitHub Pages | (측정 예정) | |
+| 2차 | Windows 노트북 · Chrome | 집 인터넷, GitHub Pages | 7.5초 | 받기 2.5초(11.55MB), 풀기 1.6초 |
 | 2차 | 내 폰 · 갤럭시 S24 울트라 | 와이파이 | (측정 예정) | |
 | 2차 | 다른 사람 폰 · 갤럭시 S24 울트라 | SK텔레콤 모바일 데이터 | (측정 예정) | |
 | 1차 (7.28MB) | Windows 노트북 · Chrome | 집 인터넷, GitHub Pages | 5.8초 | 받기 1.6초, 풀기 1.3초 |
